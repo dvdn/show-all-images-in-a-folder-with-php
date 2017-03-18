@@ -11,7 +11,6 @@ body{
     font-family: "Coda", Sans;
     font-size: 1em;
     background: #03a9f4 linear-gradient(45deg, #8bc34a 15%, #03a9f4 85%);
-    background-repeat: no-repeat;
 }
 header, footer{
     width: 100%;
@@ -23,7 +22,6 @@ header div, footer div{
 }
 header div, footer div, ul{
     width: 80%;
-    max-width: 960px;
     background-color: white;
 }
 header div{
