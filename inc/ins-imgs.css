@@ -4,7 +4,7 @@ ul.ins-imgs, li.ins-imgs-li {
 ul.ins-imgs{
     margin: 5em auto 0;
     padding-top: 1em;
-    padding-bottom: 8em;
+    padding-bottom: 4em;
     background-color: white;
 }
 li.ins-imgs-li {
@@ -43,14 +43,13 @@ div.ins-imgs-img a:focus {
     width: 30%;
     background: white;
     opacity: 0.9;
-    /*padding: 0.2em;*/
 }
 
 .pagination a {
     color: black;
     float: left;
-    padding: 0.3em 0.8em;
     text-decoration: none;
+    width: 2em;
 }
 
 .pagination a.active {
@@ -59,5 +58,5 @@ div.ins-imgs-img a:focus {
 }
 
 .pagination a:hover:not(.active) {
-    background-color: #8bc34a;
+    background-color: lightgrey;
 }
