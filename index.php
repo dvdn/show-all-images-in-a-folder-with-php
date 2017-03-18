@@ -6,10 +6,10 @@
     <title>Show images in folder</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="inc/style.css">
 </head>
 <body>
     <!-- images insertion -->
-    <?php include "ins-imgs.php"; ?>
+    <?php include "inc/ins-imgs.php"; ?>
 </body>
 </html>
