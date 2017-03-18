@@ -35,22 +35,29 @@ div.ins-imgs-img a:focus {
 }
 
 /* pagination */
-.pagination {
+.pagination{
     display: inline-block;
+    position: fixed;
+    bottom: 1.5em;
+    right: 10%;
+    width: 30%;
+    background: white;
+    opacity: 0.9;
+    /*padding: 0.2em;*/
 }
 
 .pagination a {
     color: black;
     float: left;
-    padding: 8px 16px;
+    padding: 0.3em 0.8em;
     text-decoration: none;
 }
 
 .pagination a.active {
-    background-color: slategrey;
+    background-color: #03a9f4;
     color: white;
 }
 
 .pagination a:hover:not(.active) {
-    background-color: lightgrey;
+    background-color: #8bc34a;
 }

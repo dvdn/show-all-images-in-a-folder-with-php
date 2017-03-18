@@ -1,5 +1,5 @@
 @import url(//fonts.googleapis.com/css?family=Coda);
-body, div, ul, li{
+body, div, ul, li, a{
     margin: 0;
     padding: 0;
 }
@@ -42,7 +42,9 @@ header, header div{
 footer, footer div{
     bottom: 0;
     font-size: 0.8em;
+    line-height: 2.2em;
 }
 footer div{
     border-top: 1px dotted grey;
 }
+
