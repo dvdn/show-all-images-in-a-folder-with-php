@@ -2,19 +2,19 @@ ul.ins-imgs, li.ins-imgs-li {
     list-style: none;
 }
 ul.ins-imgs{
-    margin: 5em auto 0;
+    margin: 3.8em auto 0;
     padding-top: 1em;
     padding-bottom: 5em;
     background-color: white;
 }
 li.ins-imgs-li {
     width: 100%;
-    padding:20px 0;
 }
 
 div.ins-imgs-img img {
-    max-width: 900px;
+    max-width: 60%;
     outline: none;
+    margin-top:3.8em;
     /* shadow for images
     -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
@@ -22,7 +22,8 @@ div.ins-imgs-img img {
 }
 
 div.ins-imgs-img.zoom img {
-    max-width: 100%;
+    max-width: 95%;
+    margin-top:3.8em;
 }
 
 div.ins-imgs-label {

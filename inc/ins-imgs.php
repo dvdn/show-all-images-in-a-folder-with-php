@@ -17,7 +17,7 @@ $imagesConfig = array(
     "types" => "{*.jpg,*.JPG,*.jpeg,*.JPEG,*.png,*.PNG,*.gif,*.GIF}",
     "pagination" => array (
             "usePagination" => false,
-            "imagesPerPage" => 3
+            "imagesPerPage" => 5
             )
 );
 
