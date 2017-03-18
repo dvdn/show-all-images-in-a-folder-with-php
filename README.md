@@ -8,7 +8,7 @@ This project is an evolution of https://github.com/lthr/show-all-images-in-a-fol
 It requires PHP.
 
 
-Images will display up to a max width of 900 pixels. Images larger than 900 pixels will show their full size if you click it.
+Large images will be displayed smaller than their original dimensions. You can zoom large images by clicking on it.
 
 You can link to a specific image as they're link anchored. Just click on the specific image and copy the browser URL.
 

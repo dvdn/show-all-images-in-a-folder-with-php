@@ -13,7 +13,7 @@ require_once "Pagination.php";
 */
 
 $imagesConfig = array(
-    "folderPath" => "img/",
+    "folderPath" => "imgs/",
     "types" => "{*.jpg,*.JPG,*.jpeg,*.JPEG,*.png,*.PNG,*.gif,*.GIF}",
     "pagination" => array (
             "usePagination" => false,
@@ -118,7 +118,7 @@ if ($imagesConfig['pagination']['usePagination']) {
 }
 
 # Action render images list with style
-echo('<link rel="stylesheet" type="text/css" href="ins-imgs.css">');
+echo('<link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">');
 echo('<ul class="ins-imgs">');
 renderImagesHtml($imagesToDisplay);
 echo('</ul>');
