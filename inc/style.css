@@ -1,7 +1,48 @@
+@import url(//fonts.googleapis.com/css?family=Coda);
 body, div, ul, li{
     margin: 0;
     padding: 0;
 }
-body {
-    background-color: #C8D3D6;
+a{
+    text-decoration: none;
+}
+body{
+    text-align: center;
+    font-family: "Coda", Sans;
+    font-size: 1em;
+    background: #03a9f4 linear-gradient(45deg, #8bc34a 15%, #03a9f4 85%);
+}
+header, footer{
+    width: 100%;
+    position: fixed;
+}
+header div, footer div{
+    position: fixed;
+    margin-left: 10%;
+}
+header div, footer div, ul{
+    width: 80%;
+    max-width: 960px;
+    background-color: white;
+}
+header div{
+    border-bottom: 1px dotted grey;
+    -webkit-box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.5);;
+    -moz-box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.5);;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.5);;
+}
+header, header div{
+    top: 0;
+    height:5em;
+}
+    h1{
+        margin-top: 1em;
+        font-size: 1.4em;
+    }
+footer, footer div{
+    bottom: 0;
+    font-size: 0.8em;
+}
+footer div{
+    border-top: 1px dotted grey;
 }

@@ -1,24 +1,24 @@
-body {
-    text-align: center;
+ul.ins-imgs, li.ins-imgs-li {
+    list-style: none;
 }
-
-ul.ins-imgs {
-    list-style-type: none;
-    padding: 0;
+ul.ins-imgs{
+    margin: 5em auto 0;
+    padding-top: 1em;
+    padding-bottom: 8em;
+    background-color: white;
 }
-
 li.ins-imgs-li {
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: 100%;
+    padding:20px 0;
 }
 
 div.ins-imgs-img img {
     max-width: 900px;
     outline: none;
+    /* shadow for images
     -webkit-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
-    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.5);*/
 }
 
 div.ins-imgs-img.zoom img {
