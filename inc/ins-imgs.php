@@ -29,7 +29,7 @@ $images = glob($imagesConfig["folderPath"].$imagesConfig["types"], GLOB_BRACE);
  * Sort images list
  *
  * @param    array $imagesList to sort
- * @param    bool  $sortByName to sort by date. Default false, images will be sorted by date
+ * @param    bool  $sortByName to sort by name. Default false, images will be sorted by date
  * @param    bool  $newestsFirst if sorted by date, orderer by newests
  * @return    array $sortedImages
  *
