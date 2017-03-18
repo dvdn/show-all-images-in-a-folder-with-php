@@ -37,7 +37,8 @@ $images = glob($imagesConfig["folderPath"].$imagesConfig["types"], GLOB_BRACE);
 function sortImagesList(Array $imagesList, $sortByName = false, $newestsFirst = true){
     $sortedImages = array();
     if ($sortByName) {
-        $sortedImages = natsort($imagesList);
+        natsort($imagesList);
+        $sortedImages = $imagesList;
     } else {
         # sort by 'last modified' time stamp
         $count = count($imagesList);
