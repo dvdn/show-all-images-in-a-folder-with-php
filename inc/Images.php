@@ -106,6 +106,30 @@ class Images {
 EOT;
     }
 
+    /**
+     *
+     * Manage pagination
+     *
+     * @param    array $imagesList
+     * @return    array data to display, array imagesToDisplay and html for pagination
+     *
+     */
+    public function managePagination(Array $imagesList) {
+        $htmlPagination = false;
+        if ($this->pagination['usePagination']) {
+            $Pagination  = new Pagination($imagesList);
+            $pageNumber = 1;
+            if (isset($_GET['page']) && is_numeric($_GET['page']) && ($_GET['page'] > 0)) {
+                $pageNumber = (int) $_GET['page'];
+            }
+            $imagesToDisplay = $Pagination->getPageData($imagesList, $this->pagination['imagesPerPage'], $pageNumber);
+            $htmlPagination = $Pagination->renderPaginationHtml($pageNumber);
+        } else {
+            $imagesToDisplay = $imagesList;
+        }
+        return array("imagesToDisplay"=>$imagesToDisplay, "htmlPagination"=>$htmlPagination);
+    }
+
 }
 
 
