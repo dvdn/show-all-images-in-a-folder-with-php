@@ -31,16 +31,14 @@ In your index HTML, insert this:
 ```
 
 ### Settings
-In [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L15) you can find the following settings:
+In [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L18) you can find the following settings:
 
     *   folderPath : path to image folder,
-    *   types : Supported images file types
+    *   types : Supported images file types,
+    *   sortByName : to sort by name. Default false, images will be sorted by date,
+    *   orderByNewestImage : if sorted by date, orderer by newests images,
+    *   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
     *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
-
-And few lines after ( [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L29)
-
-    * @param    bool  $sortByName to sort by name. Default false, images will be sorted by date
-    * @param    bool  $newestsFirst if sorted by date, orderer by newests
 
 Adapt values according to your needs.
 

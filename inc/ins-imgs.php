@@ -7,7 +7,10 @@ require_once "Pagination.php";
 *
 * Configuration :
 *   folderPath : path to image folder,
-*   types : Supported images file types
+*   types : Supported images file types,
+*   sortByName : to sort by name. Default false, images will be sorted by date,
+*   orderByNewestImage : if sorted by date, orderer by newests images,
+*   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
 *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 *
 */
@@ -15,37 +18,39 @@ require_once "Pagination.php";
 $imagesConfig = array(
     "folderPath" => "imgs/",
     "types" => "{*.jpg,*.JPG,*.jpeg,*.JPEG,*.png,*.PNG,*.gif,*.GIF}",
+    "sortByName" => false,
+    "orderByNewestImage" => true,
+    "lastModifiedDateFormat" => "F d Y", //"F d Y H:i:s"
     "pagination" => array (
             "usePagination" => false,
-            "imagesPerPage" => 5
+            "imagesPerPage" => 7
             )
 );
 
 # Images array list generation
-$images = glob($imagesConfig["folderPath"].$imagesConfig["types"], GLOB_BRACE);
+$images = glob($GLOBALS['imagesConfig']['folderPath'].$GLOBALS['imagesConfig']['types'], GLOB_BRACE);
 
 /**
  *
  * Sort images list
  *
  * @param    array $imagesList to sort
- * @param    bool  $sortByName to sort by name. Default false, images will be sorted by date
- * @param    bool  $newestsFirst if sorted by date, orderer by newests
  * @return    array $sortedImages
  *
  */
-function sortImagesList(Array $imagesList, $sortByName = false, $newestsFirst = true){
+function sortImagesList(Array $imagesList){
     $sortedImages = array();
-    if ($sortByName) {
-        natsort($imagesList);
+    # check sort by name or by date
+    if ($GLOBALS['imagesConfig']['sortByName']) {
         $sortedImages = $imagesList;
+        natsort($sortedImages);
     } else {
-        # sort by 'last modified' time stamp
+        # sort by 'last modified' timestamp
         $count = count($imagesList);
         for ($i = 0; $i < $count; $i++) {
             $sortedImages[date('YmdHis', filemtime($imagesList[$i])) . $i] = $imagesList[$i];
         }
-        if ($newestsFirst) {
+        if ($GLOBALS['imagesConfig']['orderByNewestImage']) {
             krsort($sortedImages);
         } else {
             ksort($sortedImages);
@@ -82,7 +87,7 @@ function renderImageHtml($image) {
     $imageName = pathinfo($imageName, PATHINFO_FILENAME);
 
     # Get 'last modified' date
-    $lastModifiedDate = date('F d Y H:i:s', filemtime($image));
+    $lastModifiedDate = date($GLOBALS['imagesConfig']['lastModifiedDateFormat'], filemtime($image));
 
     $imageLabel = 'Image name: ' . $imageName;
     $lastModifiedLabel = '(last modified: ' . $lastModifiedDate . ')';
@@ -106,13 +111,13 @@ $images = sortImagesList($images);
 $htmlPagination = false;
 
 // pagination
-if ($imagesConfig['pagination']['usePagination']) {
+if ($GLOBALS['imagesConfig']['pagination']['usePagination']) {
     $Pagination  = new Pagination($images);
     $pageNumber = 1;
     if (isset($_GET['page']) && is_numeric($_GET['page']) && ($_GET['page'] > 0)) {
         $pageNumber = (int) $_GET['page'];
     }
-    $imagesToDisplay = $Pagination->getPageData($images, $imagesConfig['pagination']['imagesPerPage'], $pageNumber);
+    $imagesToDisplay = $Pagination->getPageData($images, $GLOBALS['imagesConfig']['pagination']['imagesPerPage'], $pageNumber);
     $htmlPagination = $Pagination->renderPaginationHtml($pageNumber);
 } else {
     $imagesToDisplay = $images;
