@@ -13,6 +13,8 @@
 *
 */
 
+require_once "Pagination.php";
+
 class Images {
 
     public function __construct() {
@@ -27,7 +29,6 @@ class Images {
                     );
         # Images array list generation
         $this->imagesList = glob($this->folderPath.$this->types, GLOB_BRACE);
-
     }
 
     /**
@@ -129,6 +130,22 @@ EOT;
         }
         return array("imagesToDisplay"=>$imagesToDisplay, "htmlPagination"=>$htmlPagination);
     }
+
+    /**
+     *
+     * Action render images list and eventually pagination
+     *
+     * @param    array $dataToDisplay
+     * @return    void, echoes html
+     *
+     */
+    public function renderHtmlData(Array $dataToDisplay) {
+        echo('<ul class="ins-imgs">');
+            $this->renderImagesHtml($dataToDisplay["imagesToDisplay"]);
+        echo('</ul>');
+        echo $dataToDisplay["htmlPagination"];
+    }
+
 
 }
 

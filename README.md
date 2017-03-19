@@ -21,17 +21,23 @@ See [Demo](http://dvdn.free.fr/show-all-images-in-folder/)
 This works out of the box, so you can either [download the zip](https://github.com/dvdn/show-all-images-in-a-folder-with-php/archive/master.zip) or Git clone the repository.
 
 #### The other way
-Add [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php) and [`ins-imgs.css`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.css) in your root folder (or wherever your index file is).
+Copy 'inc' folder [`inc`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/) in your root folder (or wherever your index file is).
 
-In your index HTML, insert this:
+In your index page :
 
-```html
+in the <head>
+
+    <!-- style for images insertion -->
+    <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
+
+in the <body>
+
     <!-- images insertion -->
     <?php include "ins-imgs.php"; ?>
-```
+
 
 ### Settings
-In [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L18) you can find the following settings:
+In [`Images.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/Images.php#L20) you can find the following settings:
 
     *   folderPath : path to image folder,
     *   types : Supported images file types,

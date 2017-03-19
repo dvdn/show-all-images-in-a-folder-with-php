@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="inc/style.css">
+    <!-- style for images insertion -->
+    <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
 </head>
 <body>
     <header><div><h1>Show all images in my folder</h1></div></header>
