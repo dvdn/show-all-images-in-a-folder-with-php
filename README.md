@@ -25,12 +25,12 @@ Copy 'inc' folder [`inc`](https://github.com/dvdn/show-all-images-in-a-folder-wi
 
 In your index page :
 
-in the <head>
+in the head
 
     <!-- style for images insertion -->
     <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
 
-in the <body>
+in the body
 
     <!-- images insertion -->
     <?php include "ins-imgs.php"; ?>
