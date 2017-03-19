@@ -1,5 +1,8 @@
 <?php
+require_once "Images.php";
 require_once "Pagination.php";
+
+$Images  = new Images();
 
 /**
 *
@@ -28,7 +31,7 @@ $imagesConfig = array(
 );
 
 # Images array list generation
-$images = glob($GLOBALS['imagesConfig']['folderPath'].$GLOBALS['imagesConfig']['types'], GLOB_BRACE);
+$images = $Images->imagesList;
 
 /**
  *
