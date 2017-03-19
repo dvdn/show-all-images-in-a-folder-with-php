@@ -42,7 +42,9 @@ In [`Images.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/b
     *   folderPath : path to image folder,
     *   types : Supported images file types,
     *   sortByName : to sort by name. Default false, images will be sorted by date,
-    *   orderByNewestImage : if sorted by date, orderer by newests images,
+    *   reverseOrder : to invert sort order, if 'true'
+    *                   if sorted by date, ordered by newests images,
+    *                   if sorted by name order is naturally inverted,
     *   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
     *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 

@@ -7,7 +7,9 @@
 *   folderPath : path to image folder,
 *   types : Supported images file types,
 *   sortByName : to sort by name. Default false, images will be sorted by date,
-*   orderByNewestImage : if sorted by date, orderer by newests images,
+*   reverseOrder : to invert sort order, if 'true'
+*                   if sorted by date, ordered by newests images,
+*                   if sorted by name order is naturally inverted,
 *   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
 *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 *
@@ -21,7 +23,7 @@ class Images {
         $this->folderPath = "imgs/";
         $this->types = "{*.jpg,*.JPG,*.jpeg,*.JPEG,*.png,*.PNG,*.gif,*.GIF}";
         $this->sortByName = false;
-        $this->orderByNewestImage = true;
+        $this->reverseOrder = true;
         $this->lastModifiedDateFormat = "F d Y"; //"F d Y H:i:s"
         $this->pagination = array (
                     "usePagination" => false,
@@ -44,14 +46,19 @@ class Images {
         # check sort by name or by date
         if ($this->sortByName) {
             $sortedImages = $imagesList;
-            natsort($sortedImages);
+            if ($this->reverseOrder) {
+                rsort($sortedImages);
+            } else {
+                natsort($sortedImages);
+            }
+
         } else {
             # sort by 'last modified' timestamp
             $count = count($imagesList);
             for ($i = 0; $i < $count; $i++) {
                 $sortedImages[date('YmdHis', filemtime($imagesList[$i])) . $i] = $imagesList[$i];
             }
-            if ($this->orderByNewestImage) {
+            if ($this->reverseOrder) {
                 krsort($sortedImages);
             } else {
                 ksort($sortedImages);
@@ -148,5 +155,3 @@ EOT;
 
 
 }
-
-
