@@ -21,26 +21,32 @@ See [Demo](http://dvdn.free.fr/show-all-images-in-folder/)
 This works out of the box, so you can either [download the zip](https://github.com/dvdn/show-all-images-in-a-folder-with-php/archive/master.zip) or Git clone the repository.
 
 #### The other way
-Add [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php) and [`ins-imgs.css`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.css) in your root folder (or wherever your index file is).
+Copy 'inc' folder [`inc`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/) in your root folder (or wherever your index file is).
 
-In your index HTML, insert this:
+In your index page :
 
-```html
+in the head
+
+    <!-- style for images insertion -->
+    <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
+
+in the body
+
     <!-- images insertion -->
     <?php include "ins-imgs.php"; ?>
-```
+
 
 ### Settings
-In [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L15) you can find the following settings:
+In [`Images.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/Images.php#L20) you can find the following settings:
 
     *   folderPath : path to image folder,
-    *   types : Supported images file types
+    *   types : Supported images file types,
+    *   sortByName : to sort by name. Default false, images will be sorted by date,
+    *   reverseOrder : to invert sort order, if 'true'
+    *                   if sorted by date, ordered by newests images,
+    *                   if sorted by name order is naturally inverted,
+    *   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
     *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
-
-And few lines after ([`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L29))
-
-    * @param    bool  $sortByName to sort by name. Default false, images will be sorted by date
-    * @param    bool  $newestsFirst if sorted by date, orderer by newests
 
 Adapt values according to your needs.
 
