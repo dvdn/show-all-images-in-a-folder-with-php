@@ -37,7 +37,7 @@ In [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php
     *   types : Supported images file types
     *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 
-And few lines after ( [`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L29)
+And few lines after ([`ins-imgs.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/ins-imgs.php#L29))
 
     * @param    bool  $sortByName to sort by name. Default false, images will be sorted by date
     * @param    bool  $newestsFirst if sorted by date, orderer by newests
