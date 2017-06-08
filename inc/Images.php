@@ -6,7 +6,7 @@
 * Configuration :
 *   folderPath : path to image folder,
 *   types : Supported images file types,
-*   sortByName : to sort by name. Default false, images will be sorted by date,
+*   sortByName : to sort by name. Default false, images will be sorted by last modified date,
 *   reverseOrder : to invert sort order, if 'true'
 *                   if sorted by date, ordered by newests images,
 *                   if sorted by name order is naturally inverted,
@@ -121,21 +121,25 @@ EOT;
      *
      */
     private function getDateLabel($image) {
-
-        $exifData = exif_read_data($image);
-
-        if ($exifData !== false) {
+        if (exif_imagetype($image) == 2 && exif_read_data($image) !== false) {
+            $exifData = exif_read_data($image);
             if (array_key_exists('DateTimeOriginal', $exifData)) {
-                $date = $exifData['DateTimeOriginal'];
+                $rawDate = $exifData['DateTimeOriginal'];
             } else if (array_key_exists('DateTime', $exifData)) {
-                $date = $exifData['DateTime'];
+                $rawDate = $exifData['DateTime'];
             }
-        } else {
+            if (isset($rawDate)) {
+                $d = new DateTime($rawDate);
+                $timestamp = $d->getTimestamp();
+                $date = $d->format($this->dateFormat);
+            }
+        }
+        if (false == isset($date)) {
             // last modified date
-            $date = 'last modified: ' . date($this->dateFormat, filemtime($image));
+            $date =  date($this->dateFormat, filemtime($image));
         }
 
-        return '(' . $date . ')';
+        return '( last modified : ' . $date . ')';
     }
 
     /**
