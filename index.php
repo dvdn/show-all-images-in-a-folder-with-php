@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="inc/style.css">
+    <link rel="shortcut icon" type="image/png" href="inc/favicon.png"/>
     <!-- style for images insertion -->
     <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
 </head>

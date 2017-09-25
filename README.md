@@ -14,7 +14,7 @@ You can link to a specific image as they're link anchored. Just click on the spe
 
 You can use pagination and specify a number of images per pages.
 
-See [Demo](http://dvdn.free.fr/show-all-images-in-folder/)
+See [Demo](http://dvdn.online.fr/show-all-images-in-folder/)
 
 ### Setup
 #### The easy way
