@@ -37,9 +37,10 @@ header, header div{
         font-size: 1.4em;
     }
 footer, footer div{
-    bottom: 0;
+    bottom: 0;    
+    line-height: 2.5em;
+    height: 5em;
     font-size: 0.8em;
-    line-height: 2.2em;
 }
 footer div{
     border-top: 1px dotted grey;
