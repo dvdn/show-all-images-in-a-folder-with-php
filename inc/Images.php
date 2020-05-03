@@ -8,9 +8,9 @@
 *   types : Supported images file types,
 *   sortByName : to sort by name. Default false, images will be sorted by last modified date,
 *   reverseOrder : to invert sort order, if 'true'
-*                   if sorted by date, ordered by newests images,
+*                   if sorted by date, ordered by newests images using last modified date,
 *                   if sorted by name order is naturally inverted,
-*   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
+*   dateFormat : date format in label (http://php.net/manual/en/function.date.php)
 *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 *
 */
@@ -51,12 +51,11 @@ class Images {
             } else {
                 natsort($sortedImages);
             }
-
         } else {
             # sort by 'last modified' timestamp
             $count = count($imagesList);
             for ($i = 0; $i < $count; $i++) {
-                $sortedImages[date('YmdHis', filemtime($imagesList[$i])) . $i] = $imagesList[$i];
+                $sortedImages[date('YmdHis', $this->getLastTimestamp($imagesList[$i])) . $i] = $imagesList[$i];
             }
             if ($this->reverseOrder) {
                 krsort($sortedImages);
@@ -64,6 +63,7 @@ class Images {
                 ksort($sortedImages);
             }
         }
+
         return $sortedImages;
     }
 
@@ -95,7 +95,8 @@ class Images {
         $imageName = pathinfo($imageName, PATHINFO_FILENAME);
 
         $imageLabel = 'Image name: ' . $imageName;
-        $dateLabel = $this->getDateLabel($image);
+        $date = date($this->dateFormat , $this->getLastTimestamp($image));
+        $dateLabel = '(last modified : ' . $date . ')';
 
         $label = $imageLabel.' '.$dateLabel;
 
@@ -112,15 +113,17 @@ class Images {
 EOT;
     }
 
+
     /**
      *
-     * Html image's date rendering
+     * Get image last modification date timestamp
+     * using EXIF data if possible
      *
      * @param    string $image to render
-     * @return    string $date
+     * @return    string $datetimestamp
      *
      */
-    private function getDateLabel($image) {
+    private function getLastTimestamp($image) {
         if (exif_imagetype($image) == 2 && exif_read_data($image) !== false) {
             $exifData = exif_read_data($image);
             if (array_key_exists('DateTimeOriginal', $exifData)) {
@@ -130,17 +133,18 @@ EOT;
             }
             if (isset($rawDate)) {
                 $d = new DateTime($rawDate);
-                $timestamp = $d->getTimestamp();
-                $date = $d->format($this->dateFormat);
+                $datetimestamp = $d->getTimestamp();
             }
         }
-        if (false == isset($date)) {
+
+        if (false == isset($datetimestamp)) {
             // last modified date
-            $date =  date($this->dateFormat, filemtime($image));
+            $datetimestamp =  filemtime($image);
         }
 
-        return '( last modified : ' . $date . ')';
+        return $datetimestamp;
     }
+
 
     /**
      *

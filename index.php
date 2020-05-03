@@ -12,16 +12,9 @@
     <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
 </head>
 <body>
-
-<?php
-//***PHP debug
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-//***
-?>
     <header><div><h1>Show all images in my folder</h1></div></header>
     <!-- images insertion -->
     <?php include "inc/ins-imgs.php"; ?>
-    <footer><div>2017 // source code <a target="_blank" href="https://github.com/dvdn/show-all-images-in-a-folder-with-php">dvdn/show-all-images-in-a-folder-with-php</a></div></footer>
+    <footer><div>2020 // source code <a target="_blank" href="https://github.com/dvdn/show-all-images-in-a-folder-with-php">dvdn/show-all-images-in-a-folder-with-php</a></div></footer>
 </body>
 </html>
