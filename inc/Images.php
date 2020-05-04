@@ -124,8 +124,8 @@ EOT;
      *
      */
     private function getLastTimestamp($image) {
-        if (exif_imagetype($image) == 2 && exif_read_data($image) !== false) {
-            $exifData = exif_read_data($image);
+        if (exif_imagetype($image) == 2 && @exif_read_data($image) !== false) {
+            $exifData = @exif_read_data($image); //@ to fix PHP bug 'Warning: exif... illegal IFD size'
             if (array_key_exists('DateTimeOriginal', $exifData)) {
                 $rawDate = $exifData['DateTimeOriginal'];
             } else if (array_key_exists('DateTime', $exifData)) {
