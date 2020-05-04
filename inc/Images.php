@@ -5,12 +5,12 @@
 *
 * Configuration :
 *   folderPath : path to image folder,
-*   types : Supported images file types,
-*   sortByName : to sort by name. Default false, images will be sorted by date,
+*   types : which images file types will be displayed,
+*   sortByName : to sort by name. Default false, images will be sorted by last modified date,
 *   reverseOrder : to invert sort order, if 'true'
-*                   if sorted by date, ordered by newests images,
+*                   if sorted by date, ordered by newests images (uses EXIF data if possible),
 *                   if sorted by name order is naturally inverted,
-*   lastModifiedDateFormat : date format in label (http://php.net/manual/en/function.date.php)
+*   dateFormat : date format in label (http://php.net/manual/en/function.date.php)
 *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 *
 */
@@ -24,7 +24,7 @@ class Images {
         $this->types = "{*.jpg,*.JPG,*.jpeg,*.JPEG,*.png,*.PNG,*.gif,*.GIF}";
         $this->sortByName = false;
         $this->reverseOrder = true;
-        $this->lastModifiedDateFormat = "F d Y"; //"F d Y H:i:s"
+        $this->dateFormat = "F d Y"; //"F d Y H:i:s"
         $this->pagination = array (
                     "usePagination" => false,
                     "imagesPerPage" => 5
@@ -51,12 +51,11 @@ class Images {
             } else {
                 natsort($sortedImages);
             }
-
         } else {
             # sort by 'last modified' timestamp
             $count = count($imagesList);
             for ($i = 0; $i < $count; $i++) {
-                $sortedImages[date('YmdHis', filemtime($imagesList[$i])) . $i] = $imagesList[$i];
+                $sortedImages[date('YmdHis', $this->getLastTimestamp($imagesList[$i])) . $i] = $imagesList[$i];
             }
             if ($this->reverseOrder) {
                 krsort($sortedImages);
@@ -64,6 +63,7 @@ class Images {
                 ksort($sortedImages);
             }
         }
+
         return $sortedImages;
     }
 
@@ -94,12 +94,11 @@ class Images {
         $imageName = basename($image);
         $imageName = pathinfo($imageName, PATHINFO_FILENAME);
 
-        # Get 'last modified' date
-        $lastModifiedDate = date($this->lastModifiedDateFormat, filemtime($image));
-
         $imageLabel = 'Image name: ' . $imageName;
-        $lastModifiedLabel = '(last modified: ' . $lastModifiedDate . ')';
-        $label = $imageLabel.' '.$lastModifiedLabel;
+        $date = date($this->dateFormat , $this->getLastTimestamp($image));
+        $dateLabel = '(last modified : ' . $date . ')';
+
+        $label = $imageLabel.' '.$dateLabel;
 
         # Begin addition
         echo <<<EOT
@@ -113,6 +112,39 @@ class Images {
         </li>
 EOT;
     }
+
+
+    /**
+     *
+     * Get image last modification date timestamp
+     * using EXIF data if possible
+     *
+     * @param    string $image to render
+     * @return    string $datetimestamp
+     *
+     */
+    private function getLastTimestamp($image) {
+        if (exif_imagetype($image) == 2 && exif_read_data($image) !== false) {
+            $exifData = exif_read_data($image);
+            if (array_key_exists('DateTimeOriginal', $exifData)) {
+                $rawDate = $exifData['DateTimeOriginal'];
+            } else if (array_key_exists('DateTime', $exifData)) {
+                $rawDate = $exifData['DateTime'];
+            }
+            if (isset($rawDate)) {
+                $d = new DateTime($rawDate);
+                $datetimestamp = $d->getTimestamp();
+            }
+        }
+
+        if (false == isset($datetimestamp)) {
+            // last modified date
+            $datetimestamp =  filemtime($image);
+        }
+
+        return $datetimestamp;
+    }
+
 
     /**
      *
