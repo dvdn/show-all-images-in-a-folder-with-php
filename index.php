@@ -12,9 +12,9 @@
     <link rel="stylesheet" type="text/css" href="inc/ins-imgs.css">
 </head>
 <body>
-    <header><div><h1>Show all images in my folder</h1></div></header>
+    <header><h1>Show all images in my folder</h1></header>
     <!-- images insertion -->
     <?php include "inc/ins-imgs.php"; ?>
-    <footer><div>2020 // source code <a target="_blank" href="https://github.com/dvdn/show-all-images-in-a-folder-with-php">dvdn/show-all-images-in-a-folder-with-php</a></div></footer>
+    <footer><?php echo date("Y"); ?> // source code <a target="_blank" href="https://github.com/dvdn/show-all-images-in-a-folder-with-php">dvdn/show-all-images-in-a-folder-with-php</a></footer>
 </body>
 </html>

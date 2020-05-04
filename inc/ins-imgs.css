@@ -1,33 +1,29 @@
-ul.ins-imgs, li.ins-imgs-li {
+ul.ins-imgs, li.ins-imgs-li{
     list-style: none;
 }
 ul.ins-imgs{
     margin: 2em auto 0;
     padding-top: 1em;
-    padding-bottom: 5em;
+    padding-bottom: 8em;
     background-color: white;
 }
-li.ins-imgs-li {
+li.ins-imgs-li{
     width: 100%;
 }
-
-div.ins-imgs-img img {
+div.ins-imgs-img img{
     max-width: 60%;
     outline: none;
     margin-top:3.8em;
 }
-
-div.ins-imgs-img.zoom img {
+div.ins-imgs-img.zoom img{
     max-width: 95%;
     margin-top:3.8em;
 }
-
 div.ins-imgs-label {
     padding-top: 5px;
     font: 9px sans-serif;
 }
-
-div.ins-imgs-img a:focus {
+div.ins-imgs-img a:focus{
     outline: none;
 }
 
@@ -35,25 +31,30 @@ div.ins-imgs-img a:focus {
 .pagination{
     display: inline-block;
     position: fixed;
-    bottom: 1.5em;
+    z-index: 999;
+    bottom: 3.25em;
     right: 10%;
-    width: 30%;
+    max-width: 80%;
     background: white;
     opacity: 0.9;
 }
-
-.pagination a {
+.pagination a{
+    width: 2em;    
+    padding: 0.2em .4em;
     color: black;
     float: left;
     text-decoration: none;
-    width: 2em;
 }
-
-.pagination a.active {
+.pagination a.active{
     background-color: #03a9f4;
     color: white;
 }
-
-.pagination a:hover:not(.active) {
+.pagination a:hover:not(.active){
     background-color: lightgrey;
+}
+
+@media only screen and (max-width : 480px){
+    ul.ins-imgs {
+        padding-bottom: 10em;
+    }
 }
