@@ -5,10 +5,10 @@
 *
 * Configuration :
 *   folderPath : path to image folder,
-*   types : Supported images file types,
+*   types : which images file types will be displayed,
 *   sortByName : to sort by name. Default false, images will be sorted by last modified date,
 *   reverseOrder : to invert sort order, if 'true'
-*                   if sorted by date, ordered by newests images using last modified date,
+*                   if sorted by date, ordered by newests images (uses EXIF data if possible),
 *                   if sorted by name order is naturally inverted,
 *   dateFormat : date format in label (http://php.net/manual/en/function.date.php)
 *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]

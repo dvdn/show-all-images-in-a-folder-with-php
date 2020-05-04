@@ -34,30 +34,27 @@ in the body
 
 
 ### Settings
-In [`Images.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/Images.php#L20) you can find the following settings:
+In [`Images.php`](https://github.com/dvdn/show-all-images-in-a-folder-with-php/blob/master/inc/Images.php#L20) you can adjust the following settings:
 
     *   folderPath : path to image folder,
-    *   types : Supported images file types,
-    *   sortByName : to sort by name. Default false, images will be sorted by date,
+    *   types : which images file types will be displayed,
+    *   sortByName : to sort by name. Default false, images will be sorted by last modified date,
     *   reverseOrder : to invert sort order, if 'true'
-    *                   if sorted by date, ordered by newests images using last modified date,
+    *                   if sorted by date, ordered by newests images (uses EXIF data if possible),
     *                   if sorted by name order is naturally inverted,
     *   dateFormat : date format in label (http://php.net/manual/en/function.date.php)
     *   pagination : [usePagination : true/false, imagesPerPage : number of images per pages]
 
 Adapt values according to your needs.
 
-### Contributions
-Very welcomed.
-
 ### Forked
 This project is an evolution of https://github.com/lthr/show-all-images-in-a-folder-with-php.
 
-I forked as my old pull request in original repository eventually died unmerged without any comment.
+I forked as my old pull request in original repository eventually died unmerged without any comment :/ .
 
 Features addition :
 - pagination
-- get image date in EXIF Data
+- image date from EXIF metadata
 
-### Customized implementations
-[Easy Folio](https://github.com/mikelothar/easy-folio)
+### Contributions
+Very welcomed.
